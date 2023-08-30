@@ -121,6 +121,12 @@ function solvePostfix(value) {
 }
 
 keys.addEventListener('click', function (event) {
+
+    if(content=="Invalid Expression"){
+        content="";
+        document.getElementById('display').innerText = content;
+    }
+
     if (event.target.id != '=' && event.target.id != 'AC' && event.target.id != 'DEL' && event.target.id !='keys') {
         const pressedKeyId = event.target.id;
         content += pressedKeyId;
