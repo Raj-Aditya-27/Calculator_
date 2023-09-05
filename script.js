@@ -117,12 +117,16 @@ function solvePostfix(value) {
             stack.push(value[i]);
         }
     }
+    //rounding off value upto 4 decimal places
+    if(!(Number.isNaN(result))){
+        result=result.toFixed(4);
+    }
     content=result;
 }
 
 keys.addEventListener('click', function (event) {
 
-    if(content=="Invalid Expression"){
+    if(content=="Invalid Expression" || content=='Infinity'){
         content="";
         document.getElementById('display').innerText = content;
     }
@@ -147,6 +151,13 @@ keys.addEventListener('click', function (event) {
 
         for(i=0;i<size;i++)
         {
+            //removing first value as negative number error
+            if(i==0 && content[i]=='-'){
+                digit+=content[i];
+                expression[index]=digit;
+                continue;
+            }
+
             if(content[i]=='+' || content[i]=='-' || content[i]=='*' || content[i]=='/' || content[i]=='^')
             {
                 expression[++index]=content[i];
@@ -165,5 +176,6 @@ keys.addEventListener('click', function (event) {
     if(Number.isNaN(content)){
         content="Invalid Expression";
     }
+
     document.getElementById('display').innerText = content;
 });
