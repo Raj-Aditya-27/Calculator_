@@ -118,7 +118,7 @@ function solvePostfix(value) {
         }
     }
     //rounding off value upto 4 decimal places
-    if(!(Number.isNaN(result))){
+    if(!(Number.isNaN(result)) && result%1 !==0){
         result=result.toFixed(4);
     }
     content=result;
